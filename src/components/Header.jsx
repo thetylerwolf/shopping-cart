@@ -1,6 +1,8 @@
 import Cart from "./Cart";
 
-function Header() {
+function Header(props) {
+  const { cartItems } = props;
+
   return (
     <div
       style={{
@@ -15,7 +17,7 @@ function Header() {
       }}
     >
       <div>My Shop</div>
-      <Cart />
+      <Cart numItems={cartItems} />
     </div>
   );
 }
