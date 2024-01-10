@@ -1,8 +1,6 @@
 import Cart from "./Cart";
 
-function Header(props) {
-  const { cartItems } = props;
-
+function Header({ cartItems }) {
   return (
     <div
       style={{
@@ -16,8 +14,10 @@ function Header(props) {
         color: "white",
       }}
     >
-      <div>My Shop</div>
-      <Cart numItems={cartItems} />
+      <div>Duck Shop</div>
+      <div style={{ marginLeft: "auto" }}>
+        <Cart numItems={cartItems} />
+      </div>
     </div>
   );
 }

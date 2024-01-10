@@ -1,6 +1,4 @@
-function Product(props) {
-  const { name, price, image, onAdd } = props;
-
+function Product({ name, price, image, onAdd }) {
   return (
     <div>
       <img src={image} alt={name} />

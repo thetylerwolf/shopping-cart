@@ -1,7 +1,5 @@
-function Cart(props) {
-  const { numItems } = props;
-
-  return <div style={{ marginLeft: "auto" }}>Cart ({numItems})</div>;
+function Cart({ numItems }) {
+  return <div>Cart ({numItems})</div>;
 }
 
 export default Cart;

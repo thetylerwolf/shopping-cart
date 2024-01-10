@@ -1,9 +1,7 @@
 import Product from "./Product";
 import { products } from "../data";
 
-function Body(props) {
-  const { onAdd } = props;
-
+function Body({ onAdd }) {
   return (
     <div style={{ display: "flex" }}>
       {products.map((product) => {
