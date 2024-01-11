@@ -21,7 +21,12 @@ function App() {
             <Shop cartItems={cartItems} handleAddToCart={handleAddToCart} />
           }
         />
-        <Route path="/product/:id" element={<ItemPage />} />
+        <Route
+          path="/product/:id"
+          element={
+            <ItemPage cartItems={cartItems} handleAddToCart={handleAddToCart} />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
