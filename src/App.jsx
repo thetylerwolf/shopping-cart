@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Shop from "./pages/Shop";
 import ItemPage from "./pages/ItemPage";
+import Root from "./pages/Root";
 
 function App() {
   const [cartItems, setCartItems] = useState(0);
@@ -15,18 +16,23 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Shop cartItems={cartItems} handleAddToCart={handleAddToCart} />
-          }
-        />
-        <Route
-          path="/product/:id"
-          element={
-            <ItemPage cartItems={cartItems} handleAddToCart={handleAddToCart} />
-          }
-        />
+        <Route path="/" element={<Root cartItems={cartItems} />}>
+          <Route
+            index
+            element={
+              <Shop cartItems={cartItems} handleAddToCart={handleAddToCart} />
+            }
+          ></Route>
+          <Route
+            path="/product/:id"
+            element={
+              <ItemPage
+                cartItems={cartItems}
+                handleAddToCart={handleAddToCart}
+              />
+            }
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
