@@ -3,7 +3,7 @@ import { products } from "../data";
 
 function Body({ onAdd }) {
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", flexWrap: "wrap" }}>
       {products.map((product) => {
         const { name, price, image } = product;
 

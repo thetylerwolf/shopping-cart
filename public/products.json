@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Shirt",
+    "price": 150,
+    "image": "/image/shirt.jpg",
+    "description": "This is a shirt"
+  },
+  {
+    "name": "Pants",
+    "price": 250,
+    "image": "/image/pants.jpg",
+    "description": "This is pants"
+  },
+  {
+    "name": "Hat",
+    "price": 150,
+    "image": "/image/hat.jpg",
+    "description": "This is a hat"
+  },
+  {
+    "name": "Scarf",
+    "price": 250,
+    "image": "/image/scarf.jpg",
+    "description": "This is a scarf"
+  },
+  {
+    "name": "Shoes",
+    "price": 350,
+    "image": "/image/shoes.jpg",
+    "description": "This is shoes"
+  },
+  {
+    "name": "Watch",
+    "price": 450,
+    "image": "/image/watch.jpg",
+    "description": "This is a watch"
+  }
+]

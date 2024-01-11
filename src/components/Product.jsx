@@ -1,7 +1,7 @@
 function Product({ name, price, image, onAdd }) {
   return (
-    <div>
-      <img src={image} alt={name} />
+    <div style={{ padding: "2em" }}>
+      <img width={200} height={200} src={image} alt={name} />
       <p>
         {name} - {price} SEK
       </p>
