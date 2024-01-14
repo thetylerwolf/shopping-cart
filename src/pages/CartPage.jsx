@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { products } from "../data";
 
-export default function CartPage({ cartItems, onAddRemove }) {
+export default function CartPage({ cartItems, onAdd, onRemove }) {
   if (!cartItems.length) {
     return (
       <div>
@@ -21,14 +21,15 @@ export default function CartPage({ cartItems, onAddRemove }) {
         <CartItem
           count={item.count}
           product={foundItem}
-          onAddRemove={onAddRemove}
+          onAdd={onAdd}
+          onRemove={onRemove}
         />
       );
     } else return undefined;
   });
 }
 
-function CartItem({ count, product, onAddRemove }) {
+function CartItem({ count, product, onAdd, onRemove }) {
   const { name, price, image } = product;
 
   return (
@@ -42,7 +43,7 @@ function CartItem({ count, product, onAddRemove }) {
         style={{ marginLeft: 20 }}
         onClick={(e) => {
           e.preventDefault();
-          onAddRemove(product, 1);
+          onAdd(product, 1);
         }}
       >
         + Add to cart
@@ -51,7 +52,7 @@ function CartItem({ count, product, onAddRemove }) {
         style={{ marginLeft: 20 }}
         onClick={(e) => {
           e.preventDefault();
-          onAddRemove(product, -1);
+          onRemove(product, 1);
         }}
       >
         - Remove from cart

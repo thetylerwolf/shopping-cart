@@ -10,6 +10,14 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
   function handleAddToCart(item, quantity = 1) {
+    addRemoveFromCart(item, quantity);
+  }
+
+  function handleRemoveFromCart(item, quantity = 1) {
+    addRemoveFromCart(item, -quantity);
+  }
+
+  function addRemoveFromCart(item, quantity) {
     let foundItemInCart = false;
     const { id } = item;
 
@@ -43,13 +51,21 @@ function App() {
           <Route
             index
             element={
-              <Shop cartItems={cartItems} handleAddToCart={handleAddToCart} />
+              <Shop
+                cartItems={cartItems}
+                handleAddToCart={handleAddToCart}
+                handleRemoveFromCart={handleRemoveFromCart}
+              />
             }
           ></Route>
           <Route
             path="/cart"
             element={
-              <CartPage cartItems={cartItems} onAddRemove={handleAddToCart} />
+              <CartPage
+                cartItems={cartItems}
+                onAdd={handleAddToCart}
+                onRemove={handleRemoveFromCart}
+              />
             }
           />
           <Route
@@ -58,6 +74,7 @@ function App() {
               <ItemPage
                 cartItems={cartItems}
                 handleAddToCart={handleAddToCart}
+                handleRemoveFromCart={handleRemoveFromCart}
               />
             }
           />

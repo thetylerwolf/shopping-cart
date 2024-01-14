@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Product from "./Product";
 import { products } from "../data";
 
-function Body({ onAdd }) {
+function Body({ onAdd, onRemove }) {
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
       {products.map((product) => {
@@ -11,7 +11,7 @@ function Body({ onAdd }) {
 
         return (
           <Link to={`/product/${id}`} key={id}>
-            <Product product={product} onAdd={onAdd} />
+            <Product product={product} onAdd={onAdd} onRemove={onRemove} />
           </Link>
         );
       })}

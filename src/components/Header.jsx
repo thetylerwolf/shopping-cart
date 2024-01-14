@@ -15,9 +15,11 @@ function Header({ cartItems }) {
         color: "white",
       }}
     >
-      <div>Duck Shop</div>
+      <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+        <div>Duck Shop</div>
+      </Link>
       <div style={{ marginLeft: "auto" }}>
-        <Link to="/cart">
+        <Link to="/cart" style={{ textDecoration: "none", color: "white" }}>
           <Cart cartItems={cartItems} />
         </Link>
       </div>

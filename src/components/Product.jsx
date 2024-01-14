@@ -1,10 +1,10 @@
-function Product({ product, onAdd }) {
+function Product({ product, onAdd, onRemove }) {
   const { name, price, image } = product;
 
   return (
     <div style={{ padding: "2em" }}>
       <img width={200} height={200} src={image} alt={name} />
-      <p>
+      <p style={{ textDecoration: "none" }}>
         {name} - {price} SEK
       </p>
       <button
@@ -18,7 +18,7 @@ function Product({ product, onAdd }) {
       <button
         onClick={(e) => {
           e.preventDefault();
-          onAdd(product, -1);
+          onRemove(product, 1);
         }}
       >
         - Remove from cart

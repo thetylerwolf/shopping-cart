@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 import Product from "../components/Product";
 import { products } from "../data";
 
-export default function ItemPage({ handleAddToCart, cartItems }) {
+export default function ItemPage({
+  handleAddToCart,
+  handleRemoveFromCart,
+  cartItems,
+}) {
   const { id } = useParams();
   const [item, setItem] = useState();
 
@@ -21,7 +25,12 @@ export default function ItemPage({ handleAddToCart, cartItems }) {
 
   return (
     <div style={{ display: "flex" }}>
-      <Product product={item} onAdd={handleAddToCart} />
+      <Product
+        product={item}
+        onAdd={handleAddToCart}
+        onRemove={handleRemoveFromCart}
+        cartItems={cartItems}
+      />
       <div style={{ marginTop: "10em" }}>{description}</div>
     </div>
   );
