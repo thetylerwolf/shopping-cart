@@ -7,11 +7,11 @@ function Body({ onAdd }) {
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
       {products.map((product) => {
-        const { name, price, image, id } = product;
+        const { id } = product;
 
         return (
           <Link to={`/product/${id}`} key={id}>
-            <Product name={name} price={price} image={image} onAdd={onAdd} />
+            <Product product={product} onAdd={onAdd} />
           </Link>
         );
       })}

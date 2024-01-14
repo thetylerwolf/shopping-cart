@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Cart from "./Cart";
 
 function Header({ cartItems }) {
@@ -16,7 +17,9 @@ function Header({ cartItems }) {
     >
       <div>Duck Shop</div>
       <div style={{ marginLeft: "auto" }}>
-        <Cart numItems={cartItems} />
+        <Link to="/cart">
+          <Cart cartItems={cartItems} />
+        </Link>
       </div>
     </div>
   );

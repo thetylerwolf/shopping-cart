@@ -17,16 +17,11 @@ export default function ItemPage({ handleAddToCart, cartItems }) {
 
   if (!item) return <div>Item not found</div>;
 
-  const { name, price, image, description } = item;
+  const { description } = item;
 
   return (
     <div style={{ display: "flex" }}>
-      <Product
-        name={name}
-        price={price}
-        image={image}
-        onAdd={handleAddToCart}
-      />
+      <Product product={item} onAdd={handleAddToCart} />
       <div style={{ marginTop: "10em" }}>{description}</div>
     </div>
   );
