@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useCart from "../hooks/useCart";
+import { useCart } from "../providers/CartProvider/CartProvider.hook";
 import { products } from "../data";
 
 export default function CartPage() {
