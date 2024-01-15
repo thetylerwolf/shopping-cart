@@ -6,4 +6,5 @@ export default createContext({
   add: () => {},
   remove: () => {},
   count: 0,
+  totalValue: 0,
 });

@@ -16,9 +16,6 @@ export default function useGetProduct(id) {
 
   return { product };
   // const { data } = useFetch(`/products/${id}`);
-  // const [product, setProduct] = useState([]);
-  // useEffect(() => {
-  //   setProduct(data);
-  // }, [data]);
+  // const product = data
   // return { product };
 }

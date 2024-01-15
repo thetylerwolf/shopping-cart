@@ -5,9 +5,6 @@ import { products } from "../data";
 export default function useGetProducts() {
   return { products };
   // const { data } = useFetch("/products");
-  // const [products, setProducts] = useState([]);
-  // useEffect(() => {
-  //   setProducts(data);
-  // }, [data]);
+  // const products = data
   // return { products };
 }

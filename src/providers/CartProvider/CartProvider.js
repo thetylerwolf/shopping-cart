@@ -9,7 +9,6 @@ export const CartProvider = ({ children }) => {
     return cartItems;
   };
 
-  // const set = () => {};
   const addRemoveFromCart = (id, quantity) => {
     let foundItemInCart = false;
 
@@ -38,20 +37,18 @@ export const CartProvider = ({ children }) => {
 
   const add = (id, quantity) => {
     addRemoveFromCart(id, quantity);
-    // setCount(count + 1);
   };
 
   const remove = (id, quantity) => {
     addRemoveFromCart(id, -quantity);
-    // setCount(count - 1);
   };
 
   const value = {
     get,
-    // set,
     add,
     remove,
-    // count
+    // count,
+    // totalValue
   };
 
   return (
