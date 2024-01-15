@@ -2,7 +2,9 @@ import useCart from "../hooks/useCart";
 
 function Product({ product }) {
   const { name, price, image } = product;
-  const { add, remove } = useCart();
+  const { get, add, remove } = useCart();
+  const cartItems = get();
+  console.log(cartItems);
 
   return (
     <div style={{ padding: "2em" }}>

@@ -3,7 +3,8 @@ import useCart from "../hooks/useCart";
 import { products } from "../data";
 
 export default function CartPage() {
-  const { cartItems, add, remove } = useCart();
+  const { get, add, remove } = useCart();
+  const cartItems = get();
 
   if (!cartItems.length) {
     return (
