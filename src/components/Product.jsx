@@ -1,5 +1,8 @@
-function Product({ product, onAdd, onRemove }) {
+import useCart from "../hooks/useCart";
+
+function Product({ product }) {
   const { name, price, image } = product;
+  const { add, remove } = useCart();
 
   return (
     <div style={{ padding: "2em" }}>
@@ -10,7 +13,7 @@ function Product({ product, onAdd, onRemove }) {
       <button
         onClick={(e) => {
           e.preventDefault();
-          onAdd(product, 1);
+          add(product, 1);
         }}
       >
         + Add to cart
@@ -18,7 +21,7 @@ function Product({ product, onAdd, onRemove }) {
       <button
         onClick={(e) => {
           e.preventDefault();
-          onRemove(product, 1);
+          remove(product, 1);
         }}
       >
         - Remove from cart

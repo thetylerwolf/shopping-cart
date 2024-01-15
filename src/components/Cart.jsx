@@ -1,4 +1,9 @@
-function Cart({ cartItems }) {
+import useCart from "../hooks/useCart";
+
+function Cart() {
+  const { get } = useCart();
+  const cartItems = get();
+
   let count = 0;
 
   cartItems.forEach((d) => (count += d.count));

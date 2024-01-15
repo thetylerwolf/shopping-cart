@@ -1,23 +1,12 @@
 import { useParams } from "react-router-dom";
 
-import { useEffect, useState } from "react";
 import Product from "../components/Product";
-import { products } from "../data";
+import useGetProduct from "../hooks/useGetProduct";
 
-export default function ItemPage({
-  handleAddToCart,
-  handleRemoveFromCart,
-  cartItems,
-}) {
+export default function ItemPage() {
   const { id } = useParams();
-  const [item, setItem] = useState();
-
-  useEffect(() => {
-    const foundItem = products.find((p) => {
-      return p.id === +id;
-    });
-    setItem(foundItem);
-  }, [id]);
+  const { product } = useGetProduct(id);
+  const item = product;
 
   if (!item) return <div>Item not found</div>;
 
@@ -25,12 +14,7 @@ export default function ItemPage({
 
   return (
     <div style={{ display: "flex" }}>
-      <Product
-        product={item}
-        onAdd={handleAddToCart}
-        onRemove={handleRemoveFromCart}
-        cartItems={cartItems}
-      />
+      <Product product={item} />
       <div style={{ marginTop: "10em" }}>{description}</div>
     </div>
   );

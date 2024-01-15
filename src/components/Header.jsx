@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Cart from "./Cart";
 
-function Header({ cartItems }) {
+function Header() {
   return (
     <div
       style={{
@@ -20,7 +20,7 @@ function Header({ cartItems }) {
       </Link>
       <div style={{ marginLeft: "auto" }}>
         <Link to="/cart" style={{ textDecoration: "none", color: "white" }}>
-          <Cart cartItems={cartItems} />
+          <Cart />
         </Link>
       </div>
     </div>

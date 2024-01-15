@@ -7,77 +7,13 @@ import Root from "./pages/Root";
 import CartPage from "./pages/CartPage";
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
-
-  function handleAddToCart(item, quantity = 1) {
-    addRemoveFromCart(item, quantity);
-  }
-
-  function handleRemoveFromCart(item, quantity = 1) {
-    addRemoveFromCart(item, -quantity);
-  }
-
-  function addRemoveFromCart(item, quantity) {
-    let foundItemInCart = false;
-    const { id } = item;
-
-    const cart = cartItems.map((d) => {
-      let newCount = d.count;
-
-      if (d.id === id) {
-        foundItemInCart = true;
-        newCount = newCount + quantity;
-      }
-
-      return {
-        ...d,
-        count: newCount,
-      };
-    });
-
-    if (!foundItemInCart && quantity > 0) {
-      cart.push({ id, count: quantity });
-    }
-
-    const readyCart = cart.filter((d) => d.count > 0);
-
-    setCartItems(readyCart);
-  }
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Root cartItems={cartItems} />}>
-          <Route
-            index
-            element={
-              <Shop
-                cartItems={cartItems}
-                handleAddToCart={handleAddToCart}
-                handleRemoveFromCart={handleRemoveFromCart}
-              />
-            }
-          ></Route>
-          <Route
-            path="/cart"
-            element={
-              <CartPage
-                cartItems={cartItems}
-                onAdd={handleAddToCart}
-                onRemove={handleRemoveFromCart}
-              />
-            }
-          />
-          <Route
-            path="/product/:id"
-            element={
-              <ItemPage
-                cartItems={cartItems}
-                handleAddToCart={handleAddToCart}
-                handleRemoveFromCart={handleRemoveFromCart}
-              />
-            }
-          />
+        <Route path="/" element={<Root />}>
+          <Route index element={<Shop />}></Route>
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/product/:id" element={<ItemPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import useCart from "../hooks/useCart";
 import { products } from "../data";
 
-export default function CartPage({ cartItems, onAdd, onRemove }) {
+export default function CartPage() {
+  const { cartItems, add, remove } = useCart();
+
   if (!cartItems.length) {
     return (
       <div>
@@ -21,8 +24,8 @@ export default function CartPage({ cartItems, onAdd, onRemove }) {
         <CartItem
           count={item.count}
           product={foundItem}
-          onAdd={onAdd}
-          onRemove={onRemove}
+          onAdd={add}
+          onRemove={remove}
         />
       );
     } else return undefined;
