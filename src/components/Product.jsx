@@ -2,9 +2,7 @@ import useCart from "../hooks/useCart";
 
 function Product({ product }) {
   const { name, price, image } = product;
-  const { get, add, remove } = useCart();
-  const cartItems = get();
-  console.log(cartItems);
+  const { add, remove } = useCart();
 
   return (
     <div style={{ padding: "2em" }}>
@@ -15,7 +13,7 @@ function Product({ product }) {
       <button
         onClick={(e) => {
           e.preventDefault();
-          add(product, 1);
+          add(product.id, 1);
         }}
       >
         + Add to cart
@@ -23,7 +21,7 @@ function Product({ product }) {
       <button
         onClick={(e) => {
           e.preventDefault();
-          remove(product, 1);
+          remove(product.id, 1);
         }}
       >
         - Remove from cart

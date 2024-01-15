@@ -47,7 +47,7 @@ function CartItem({ count, product, onAdd, onRemove }) {
         style={{ marginLeft: 20 }}
         onClick={(e) => {
           e.preventDefault();
-          onAdd(product, 1);
+          onAdd(product.id, 1);
         }}
       >
         + Add to cart
@@ -56,7 +56,7 @@ function CartItem({ count, product, onAdd, onRemove }) {
         style={{ marginLeft: 20 }}
         onClick={(e) => {
           e.preventDefault();
-          onRemove(product, 1);
+          onRemove(product.id, 1);
         }}
       >
         - Remove from cart
