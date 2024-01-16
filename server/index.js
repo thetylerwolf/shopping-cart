@@ -6,9 +6,14 @@ const { addItem, removeItem } = require("./helpers");
 const app = express();
 const port = 8080;
 
-let cart = [];
+const state = {
+  count: 0,
+  totalCost: 0,
+  cart: [],
+};
 
 app.use(cors());
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello, do you like ducks?");
@@ -25,22 +30,24 @@ app.get("/products/:id", (req, res) => {
 });
 
 app.get("/cart", (req, res) => {
-  res.json(cart);
+  res.json(state);
 });
 
 app.put("/cart/add", (req, res) => {
-  addItem(cart, req.body.id, req.body.quantity);
-  res.json(cart);
+  addItem(state, req.body.id, req.body.quantity);
+  res.json(state);
 });
 
 app.put("/cart/remove", (req, res) => {
-  removeItem(cart, req.body.id, req.body.quantity);
-  res.json(cart);
+  removeItem(state, req.body.id, req.body.quantity);
+  res.json(state);
 });
 
 app.delete("/cart", (req, res) => {
-  cart = [];
-  res.send("DELETE request to the homepage");
+  state.cart = [];
+  state.count = 0;
+  state.totalCost = 0;
+  res.send(state);
 });
 
 app.listen(port, () => {

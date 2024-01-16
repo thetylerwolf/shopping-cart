@@ -1,7 +1,9 @@
-function addRemoveItem(cart, id, quantity) {
+const products = require("./products.json");
+
+function addRemoveItem(state, id, quantity) {
   let foundItemInCart = false;
 
-  cart.forEach((d) => {
+  state.cart.forEach((d) => {
     let newCount = d.count;
 
     if (d.id === id) {
@@ -13,18 +15,37 @@ function addRemoveItem(cart, id, quantity) {
   });
 
   if (!foundItemInCart && quantity > 0) {
-    cart.push({ id, count: quantity });
+    state.cart.push({ id, count: quantity });
   }
 
-  return cart.filter((d) => d.count > 0);
+  recalculateState(state);
+
+  return state;
 }
 
-function addItem(cart, id, quantity) {
-  return addRemoveItem(cart, id, quantity);
+function addItem(state, id, quantity) {
+  return addRemoveItem(state, id, quantity);
 }
 
-function removeItem(cart, id, quantity) {
-  return addRemoveItem(cart, id, -quantity);
+function removeItem(state, id, quantity) {
+  return addRemoveItem(state, id, -quantity);
+}
+
+function recalculateState(state) {
+  let count = 0,
+    totalCost = 0;
+
+  state.cart = state.cart.filter((d) => d.count > 0);
+
+  state.cart.forEach((item) => {
+    const p = products.find((product) => product.id === item.id);
+    console.log(item, p);
+    count += item.count;
+    totalCost += p.price * item.count;
+  });
+
+  state.count = count;
+  state.totalCost = totalCost;
 }
 
 module.exports = {

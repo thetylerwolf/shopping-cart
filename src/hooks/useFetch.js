@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { backendURL } from "../constants";
 
-export default function useFetch(path = "/", method = "GET") {
+export default function useFetch(path = "/", method = "GET", payload) {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -11,12 +11,13 @@ export default function useFetch(path = "/", method = "GET") {
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify(payload),
       });
       const json = await response.json();
       setData(json);
     };
     fetchData();
-  }, [path, method]);
+  }, [path, method, payload]);
 
   return { data };
 }
