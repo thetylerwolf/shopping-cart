@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
-import { useCart } from "../providers/CartProvider/CartProvider.hook";
-import { products } from "../data";
+import { Link } from 'react-router-dom';
+import { useCart } from '../providers/CartProvider/CartProvider.hook';
+import { products } from '../data';
+import styles from './CartPage.module.css';
 
 export default function CartPage() {
   const { get, add, remove } = useCart();
@@ -8,9 +9,11 @@ export default function CartPage() {
 
   if (!cartItems.length) {
     return (
-      <div>
+      <div className={styles.noItems}>
         <div>No Items in Cart!</div>
-        <Link to="/">Back to Home</Link>
+        <Link to='/'>
+          <span className={styles.link}>Back to Home</span>
+        </Link>
       </div>
     );
   }
@@ -22,12 +25,14 @@ export default function CartPage() {
 
     if (foundItem) {
       return (
-        <CartItem
-          count={item.count}
-          product={foundItem}
-          onAdd={add}
-          onRemove={remove}
-        />
+        <div className={styles.container}>
+          <CartItem
+            count={item.count}
+            product={foundItem}
+            onAdd={add}
+            onRemove={remove}
+          />
+        </div>
       );
     } else return undefined;
   });
@@ -37,30 +42,34 @@ function CartItem({ count, product, onAdd, onRemove }) {
   const { name, price, image } = product;
 
   return (
-    <div style={{ padding: "2em", display: "flex" }}>
-      <img width={75} height={75} src={image} alt={name} />
-      <p>
-        {name} - {price} SEK
-      </p>
-      <p style={{ marginLeft: 20 }}>{count} in cart</p>
-      <button
-        style={{ marginLeft: 20 }}
-        onClick={(e) => {
-          e.preventDefault();
-          onAdd(product.id, 1);
-        }}
-      >
-        + Add to cart
-      </button>
-      <button
-        style={{ marginLeft: 20 }}
-        onClick={(e) => {
-          e.preventDefault();
-          onRemove(product.id, 1);
-        }}
-      >
-        - Remove from cart
-      </button>
+    <div className={styles.item}>
+      <img className={styles.image} src={image} alt={name} />
+      <div className={styles.description}>
+        <p className={styles.title}>
+          {name} - {price} SEK
+        </p>
+        <p>x {count}</p>
+        <div className={styles.buttonsContainer}>
+          <button
+            className={styles.button}
+            onClick={(e) => {
+              e.preventDefault();
+              onAdd(product.id, 1);
+            }}
+          >
+            +
+          </button>
+          <button
+            className={styles.button}
+            onClick={(e) => {
+              e.preventDefault();
+              onRemove(product.id, 1);
+            }}
+          >
+            -
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
