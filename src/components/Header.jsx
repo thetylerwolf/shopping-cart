@@ -1,27 +1,21 @@
-import { Link } from "react-router-dom";
-import Cart from "./Cart";
+import { Link } from 'react-router-dom';
+import Cart from './Cart';
+import styles from './Header.module.css';
 
 function Header() {
   return (
-    <div
-      style={{
-        backgroundColor: "#282c34",
-        minHeight: 60,
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingTop: 10,
-        display: "flex",
-        fontSize: "2em",
-        color: "white",
-      }}
-    >
-      <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-        <div>Duck Shop</div>
-      </Link>
-      <div style={{ marginLeft: "auto" }}>
-        <Link to="/cart" style={{ textDecoration: "none", color: "white" }}>
-          <Cart />
+    <div className={styles.header}>
+      <div className={styles.container}>
+        <Link to='/' className={styles.logo}>
+          <div>
+            <span className={styles.accent}>&rang;Duck</span> Shop
+          </div>
         </Link>
+        <div>
+          <Link to='/cart' className={styles.icon}>
+            <Cart />
+          </Link>
+        </div>
       </div>
     </div>
   );

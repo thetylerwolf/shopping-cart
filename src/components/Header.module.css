@@ -1,0 +1,29 @@
+.header {
+  background-color: var(--main-background);
+  padding: 1rem;
+  color: var(--light-background);
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 60rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+  text-decoration: none;
+  color: var(--light-background);
+}
+
+.icon {
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: var(--light-background);
+}
+
+.accent {
+  color: var(--secondary-accent);
+}
