@@ -5,6 +5,10 @@
   margin: 0;
   padding: 0;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 html {
   font-family: 'Proxima Nova', system-ui, sans-serif;
