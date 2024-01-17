@@ -1,7 +1,10 @@
+
 import { Link } from 'react-router-dom';
-import { useCart } from '../providers/CartProvider/CartProvider.hook';
 import { products } from '../data';
 import styles from './CartPage.module.css';
+
+import useCart from "../hooks/useCart";
+
 
 export default function CartPage() {
   const { get, add, remove } = useCart();

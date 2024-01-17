@@ -1,5 +1,5 @@
-import { useCart } from '../providers/CartProvider/CartProvider.hook';
 import styles from './Product.module.css';
+import useCart from "../hooks/useCart";
 
 function Product({ product }) {
   const { name, price, image } = product;

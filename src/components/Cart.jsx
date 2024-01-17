@@ -1,4 +1,4 @@
-import { useCart } from "../providers/CartProvider/CartProvider.hook";
+import useCart from "../hooks/useCart";
 
 function Cart() {
   const { get } = useCart();
