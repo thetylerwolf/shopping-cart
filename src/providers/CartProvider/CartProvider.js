@@ -41,6 +41,10 @@ export const CartProvider = ({ children }) => {
 
     const readyCart = cart.filter((d) => d.count > 0);
 
+    let newTotalCount = 0;
+    readyCart.forEach((item) => (newTotalCount += item.count));
+
+    setCount(newTotalCount);
     setCartItems(readyCart);
   };
 
@@ -56,7 +60,7 @@ export const CartProvider = ({ children }) => {
     get,
     add,
     remove,
-    // count,
+    count,
     // totalValue
   };
 

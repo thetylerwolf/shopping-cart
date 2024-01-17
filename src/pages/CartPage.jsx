@@ -1,44 +1,47 @@
-
-import { Link } from 'react-router-dom';
-import { products } from '../data';
-import styles from './CartPage.module.css';
+import { Link } from "react-router-dom";
+import { products } from "../data";
+import styles from "./CartPage.module.css";
 
 import useCart from "../hooks/useCart";
 
-
 export default function CartPage() {
-  const { get, add, remove } = useCart();
+  const { get, add, remove, count } = useCart();
   const cartItems = get();
 
   if (!cartItems.length) {
     return (
       <div className={styles.noItems}>
         <div>No Items in Cart!</div>
-        <Link to='/'>
+        <Link to="/">
           <span className={styles.link}>Back to Home</span>
         </Link>
       </div>
     );
   }
 
-  return cartItems.map((item) => {
-    const foundItem = products.find((product) => {
-      return product.id === item.id;
-    });
+  return (
+    <div>
+      {cartItems.map((item) => {
+        const foundItem = products.find((product) => {
+          return product.id === item.id;
+        });
 
-    if (foundItem) {
-      return (
-        <div className={styles.container}>
-          <CartItem
-            count={item.count}
-            product={foundItem}
-            onAdd={add}
-            onRemove={remove}
-          />
-        </div>
-      );
-    } else return undefined;
-  });
+        if (foundItem) {
+          return (
+            <div className={styles.container}>
+              <CartItem
+                count={item.count}
+                product={foundItem}
+                onAdd={add}
+                onRemove={remove}
+              />
+            </div>
+          );
+        } else return undefined;
+      })}
+      {/* <div>item count: {count}</div> */}
+    </div>
+  );
 }
 
 function CartItem({ count, product, onAdd, onRemove }) {

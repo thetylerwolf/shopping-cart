@@ -1,8 +1,7 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
-import Product from '../components/Product';
-import useGetProduct from '../hooks/useGetProduct';
-import styles from './ItemPage.module.css';
+import useGetProduct from "../hooks/useGetProduct";
+import styles from "./ItemPage.module.css";
 
 export default function ItemPage() {
   const { id } = useParams();
