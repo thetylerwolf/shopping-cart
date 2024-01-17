@@ -8,6 +8,11 @@
 }
 
 .image {
+  padding: 5px;
+  transition: transform 0.1s ease-in-out;
+}
+.image:hover {
+  transform: scale(1.1);
 }
 
 .title {

@@ -7,7 +7,7 @@ function Product({ product }) {
 
   return (
     <div className={styles.card}>
-      <img src={image} alt={name} />
+      <img className={styles.image} src={image} alt={name} />
       <p className={styles.title}>
         {name} - {price} SEK
       </p>
