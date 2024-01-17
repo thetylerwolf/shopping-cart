@@ -1,0 +1,49 @@
+.container {
+  margin: 20px auto;
+  max-width: 40rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'image title  button'
+    'image description  description';
+
+  gap: 10px;
+}
+
+.image {
+  grid-area: image;
+  width: 300px;
+  height: 300px;
+  padding: 5px;
+  transition: transform 0.1s ease-in-out;
+}
+.image:hover {
+  transform: scale(1.1);
+}
+
+.title {
+  grid-area: title;
+  display: inline-block;
+}
+
+.button {
+  grid-area: button;
+  height: 30px;
+  font-size: 1rem;
+  background-color: #fff;
+  border: 2px solid var(--secondary-accent);
+  border-radius: 3px;
+  transition: background-color 0.2s ease-in-out;
+}
+.button:hover {
+  color: var(--light-background);
+  background-color: var(--secondary-accent);
+}
+
+.description {
+  padding-top: 10px;
+  border-top: 1px solid black;
+  grid-area: description;
+}
