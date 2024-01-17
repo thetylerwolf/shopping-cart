@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  width: 14rem;
+  height: 19rem;
+}
+
+.image {
+  padding: 5px;
+  transition: transform 0.1s ease-in-out;
+}
+.image:hover {
+  transform: scale(1.1);
+}
+
+.title {
+  margin-bottom: 0.5rem;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex: 0 1;
+}
+
+.button {
+  width: 100%;
+  font-size: 1rem;
+  margin: 0.1rem;
+  padding: 0.5rem;
+  background-color: #fff;
+  border: 2px solid var(--secondary-accent);
+  border-radius: 3px;
+  transition: background-color 0.2s ease-in-out;
+}
+.button:hover {
+  color: var(--light-background);
+  background-color: var(--secondary-accent);
+}

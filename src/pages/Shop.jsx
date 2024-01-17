@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
-import Product from "../components/Product";
-import useGetProducts from "../hooks/useGetProducts";
+import { Link } from 'react-router-dom';
+import Product from '../components/Product';
+import useGetProducts from '../hooks/useGetProducts';
+import styles from './Shop.module.css';
 
 function Shop() {
   const { products } = useGetProducts();
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
+    <div className={styles.container}>
       {products.map((product) => {
         const { id } = product;
 
