@@ -6,7 +6,7 @@ function addRemoveItem(state, id, quantity) {
   state.cart.forEach((d) => {
     let newCount = d.count;
 
-    if (d.id === id) {
+    if (+d.id === +id) {
       foundItemInCart = true;
       newCount = newCount + quantity;
     }
@@ -38,7 +38,7 @@ function recalculateState(state) {
   state.cart = state.cart.filter((d) => d.count > 0);
 
   state.cart.forEach((item) => {
-    const p = products.find((product) => product.id === item.id);
+    const p = products.find((product) => +product.id === +item.id);
     console.log(item, p);
     count += item.count;
     totalCost += p.price * item.count;

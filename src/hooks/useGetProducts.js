@@ -1,10 +1,6 @@
-// import { useEffect, useState } from "react";
-// import useFetch from "./useFetch";
-import { products } from "../data";
+import useFetch from "./useFetch";
 
 export default function useGetProducts() {
-  return { products };
-  // const { data } = useFetch("/products");
-  // const products = data
-  // return { products };
+  const { data } = useFetch("/products", "GET");
+  return { products: data };
 }

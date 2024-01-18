@@ -1,9 +1,19 @@
-import styles from './Product.module.css';
+import styles from "./Product.module.css";
 import useCart from "../hooks/useCart";
+import { addItem, removeItem } from "../api";
 
 function Product({ product }) {
+  const { setCart } = useCart();
   const { name, price, image } = product;
-  const { add, remove } = useCart();
+  const onAdd = async (id) => {
+    const cart = await addItem(id, 1);
+    setCart(cart);
+  };
+
+  const onRemove = async (id) => {
+    const cart = await removeItem(id, 1);
+    setCart(cart);
+  };
 
   return (
     <div className={styles.card}>
@@ -16,7 +26,7 @@ function Product({ product }) {
           className={styles.button}
           onClick={(e) => {
             e.preventDefault();
-            add(product.id, 1);
+            onAdd(product.id);
           }}
         >
           + Add
@@ -25,7 +35,7 @@ function Product({ product }) {
           className={styles.button}
           onClick={(e) => {
             e.preventDefault();
-            remove(product.id, 1);
+            onRemove(product.id);
           }}
         >
           - Remove

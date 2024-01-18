@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
-import Product from '../components/Product';
-import useGetProducts from '../hooks/useGetProducts';
-import styles from './Shop.module.css';
+import { Link } from "react-router-dom";
+import Product from "../components/Product";
+import useGetProducts from "../hooks/useGetProducts";
+import styles from "./Shop.module.css";
 
 function Shop() {
   const { products } = useGetProducts();
+
+  if (!products) return;
 
   return (
     <div className={styles.container}>

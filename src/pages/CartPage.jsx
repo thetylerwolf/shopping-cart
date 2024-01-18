@@ -3,10 +3,11 @@ import { products } from "../data";
 import styles from "./CartPage.module.css";
 
 import useCart from "../hooks/useCart";
+import { addItem, removeItem } from "../api";
 
 export default function CartPage() {
-  const { get, add, remove, count } = useCart();
-  const cartItems = get();
+  const { cart, setCart } = useCart();
+  const cartItems = cart;
 
   if (!cartItems.length) {
     return (
@@ -19,11 +20,21 @@ export default function CartPage() {
     );
   }
 
+  const onAdd = async (id) => {
+    const cart = await addItem(id, 1);
+    setCart(cart);
+  };
+
+  const onRemove = async (id) => {
+    const cart = await removeItem(id, 1);
+    setCart(cart);
+  };
+
   return (
     <div>
       {cartItems.map((item) => {
         const foundItem = products.find((product) => {
-          return product.id === item.id;
+          return product.id === +item.id;
         });
 
         if (foundItem) {
@@ -32,14 +43,13 @@ export default function CartPage() {
               <CartItem
                 count={item.count}
                 product={foundItem}
-                onAdd={add}
-                onRemove={remove}
+                onAdd={onAdd}
+                onRemove={onRemove}
               />
             </div>
           );
         } else return undefined;
       })}
-      {/* <div>item count: {count}</div> */}
     </div>
   );
 }
@@ -60,7 +70,7 @@ function CartItem({ count, product, onAdd, onRemove }) {
             className={styles.button}
             onClick={(e) => {
               e.preventDefault();
-              onAdd(product.id, 1);
+              onAdd(product.id);
             }}
           >
             +
@@ -69,7 +79,7 @@ function CartItem({ count, product, onAdd, onRemove }) {
             className={styles.button}
             onClick={(e) => {
               e.preventDefault();
-              onRemove(product.id, 1);
+              onRemove(product.id);
             }}
           >
             -

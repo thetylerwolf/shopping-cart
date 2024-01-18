@@ -17,6 +17,7 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/product/:id" element={<ItemPage />} />
           </Route>
+          <Route path="/privacy-policy" element={"blah blah blah"} />
         </Routes>
       </BrowserRouter>
     </CartProvider>
