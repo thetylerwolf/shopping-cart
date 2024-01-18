@@ -1,1 +1,7 @@
-export const backendURL = "http://localhost:8080";
+const localAPIUrl = process.env.REACT_APP_LOCAL_API_URL;
+const prodAPIUrl = process.env.REACT_APP_PROD_API_URL;
+
+export const backendURL =
+  process.env.NODE_ENV === "development" ? prodAPIUrl : prodAPIUrl;
+
+console.log(process.env.NODE_ENV, process.env, backendURL);

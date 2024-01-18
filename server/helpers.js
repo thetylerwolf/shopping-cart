@@ -15,7 +15,7 @@ function addRemoveItem(state, id, quantity) {
   });
 
   if (!foundItemInCart && quantity > 0) {
-    state.cart.push({ id, count: quantity });
+    state.cart.push({ id: +id, count: quantity });
   }
 
   recalculateState(state);
@@ -39,7 +39,7 @@ function recalculateState(state) {
 
   state.cart.forEach((item) => {
     const p = products.find((product) => +product.id === +item.id);
-    console.log(item, p);
+    if (!p) return;
     count += item.count;
     totalCost += p.price * item.count;
   });
