@@ -5,8 +5,8 @@ import styles from "./CartPage.module.css";
 import useCart from "../hooks/useCart";
 
 export default function CartPage() {
-  const { get, add, remove } = useCart();
-  const cartItems = get();
+  const { cart, add, remove } = useCart();
+  const cartItems = cart;
 
   if (!cartItems.length) {
     return (
@@ -28,7 +28,7 @@ export default function CartPage() {
 
         if (foundItem) {
           return (
-            <div className={styles.container}>
+            <div className={styles.container} key={item.id}>
               <CartItem
                 count={item.count}
                 product={foundItem}

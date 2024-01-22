@@ -1,8 +1,8 @@
 import useCart from "../hooks/useCart";
 
 function Cart() {
-  const { get } = useCart();
-  const cartItems = get();
+  const { cart } = useCart();
+  const cartItems = cart;
 
   let count = 0;
 
