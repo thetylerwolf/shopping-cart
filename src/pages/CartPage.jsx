@@ -5,7 +5,7 @@ import styles from "./CartPage.module.css";
 import useCart from "../hooks/useCart";
 
 export default function CartPage() {
-  const { get, add, remove, count } = useCart();
+  const { get, add, remove } = useCart();
   const cartItems = get();
 
   if (!cartItems.length) {
@@ -39,7 +39,6 @@ export default function CartPage() {
           );
         } else return undefined;
       })}
-      {/* <div>item count: {count}</div> */}
     </div>
   );
 }

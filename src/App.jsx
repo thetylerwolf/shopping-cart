@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Shop from "./pages/Shop";
+import CartPage from "./pages/CartPage";
 import ItemPage from "./pages/ItemPage";
 import Root from "./pages/Root";
-import CartPage from "./pages/CartPage";
+import Shop from "./pages/Shop";
 import { CartProvider } from "./providers/CartProvider/CartProvider";
 
 function App() {
